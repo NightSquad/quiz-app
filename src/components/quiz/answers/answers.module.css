@@ -1,0 +1,15 @@
+.answers {
+    margin: 35px 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.alphabet {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 13px;
+    color: #333333;
+}

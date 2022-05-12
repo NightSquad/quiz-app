@@ -1,0 +1,7 @@
+.quiz {
+    height: 600px;
+    padding-top: 15px;
+    position: relative;
+    overflow: hidden;
+    background-color: white;
+}

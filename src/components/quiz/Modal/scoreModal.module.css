@@ -1,0 +1,27 @@
+.scoreTitle, .resultsTitle{
+    font-weight: 500;
+    font-size: 38px;
+    line-height: 44px;
+}
+
+.score {
+    font-weight: 700;
+    font-size: 167px;
+    line-height: 166px;
+}
+
+.resultsTitle {
+    font-family: 'Roboto';
+    font-style: normal;
+    color: #FCC822;
+}
+
+.score, .scoreTitle, .answer{
+    font-family: 'Roboto';
+    font-style: normal;
+    color: white;
+}
+
+.answer {
+    font-size: 18px;
+}

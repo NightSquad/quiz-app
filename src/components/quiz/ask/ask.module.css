@@ -1,0 +1,26 @@
+.container {
+    width: 100%;
+    min-height: 175px;
+    max-height: 250px;
+    background-color: #FCC822;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 18px;
+    position: relative;
+}
+
+.ask {
+    margin: 45px 25px;
+    text-align: center;
+    font-weight: 400;
+}
+
+.container span {
+    position: absolute;
+    left: 5px;
+    bottom: 0;
+    font-size: 12px;
+}

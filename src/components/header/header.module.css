@@ -1,0 +1,25 @@
+.navBar {
+    height: 80px;
+    box-sizing: border-box;
+    width: 90%;
+    border-bottom: 1px solid #ECECE8;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px
+}
+
+.logo {
+    font-family: 'Poppins';
+    font-weight: 400;
+    font-size: 27px;
+    line-height: 40px;
+    position: relative;
+}
+
+.hat {
+    position: absolute;
+    left: -8px;
+    top: -2px;
+}
