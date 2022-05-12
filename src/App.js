@@ -27,7 +27,7 @@ function App() {
         </Router>
         <div className='main'>
           {gameState &&!isLoaded && <CircularProgress size={150} sx={{color: '#FCC822', marginBottom: '20px'}}></CircularProgress>}
-          {gameState && randomAnswersArray.length > 0 && isLoaded && <Quiz setRandomAnswersArray={setRandomAnswersArray} answers={randomAnswersArray}/>}
+          {gameState && randomAnswersArray.length > 0 && isLoaded && <Quiz setIsLoaded={setIsLoaded} setRandomAnswersArray={setRandomAnswersArray} answers={randomAnswersArray}/>}
           {selectCategory && <CategoriesModal setIsLoaded={setIsLoaded} setRandomAnswersArray={setRandomAnswersArray} state={setSelectCategory}/>}
         </div>
       </div>

@@ -8,7 +8,7 @@ import Ask from './ask/ask';
 import ScoreModal from './Modal/scoreModal';
 import "./quiz.css"
 
-function Quiz({setRandomAnswersArray, answers}) {
+function Quiz({setIsLoaded, setRandomAnswersArray, answers}) {
     const activeStep = useSelector(state => state.stepReducer)
     const [isFinish, setFinish] = useState(false)
 
@@ -19,7 +19,7 @@ function Quiz({setRandomAnswersArray, answers}) {
             <Ask/>
             <Answers results={answers[activeStep]}/>
             <QuizFooter setFinish={setFinish}/>
-            {isFinish && <ScoreModal setRandomAnswersArray={setRandomAnswersArray} setFinish={setFinish}></ScoreModal>}
+            {isFinish && <ScoreModal setIsLoaded={setIsLoaded} setRandomAnswersArray={setRandomAnswersArray} setFinish={setFinish}></ScoreModal>}
         </div>
     );
 }
