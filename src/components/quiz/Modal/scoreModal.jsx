@@ -7,17 +7,18 @@ import getScore from '../../../_functions/getScore';
 import { useDispatch, useSelector } from 'react-redux';
 import CustomButton from '../../UI/CustomButton';
 
-function ScoreModal() {
+function ScoreModal({setRandomAnswersArray, setFinish}) {
     const answers = useSelector(state => state.answersReducer)
-    console.log(answers)
     const [scorePage, setScorePage] = useState(true)
     const [score, answersResults] = getScore(answers)
-    console.log(answersResults)
     const dispatch = useDispatch()
 
     const handleClick = () => {
-        dispatch({type: "CHANGE"})
+        setFinish(false)
+        setRandomAnswersArray([])
         dispatch({type: "FINISHGAME"})
+        dispatch({type: "RESET"})
+        dispatch({type: "setQuestions", data: []})
     }
 
     const style = {

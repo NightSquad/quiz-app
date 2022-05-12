@@ -5,9 +5,23 @@ import CustomButton from '../UI/CustomButton';
 import styles from './Categories.module.css'
 import { makeStyles } from '@mui/styles';
 import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
 
-function CategoriesModal({state}) {
+function randomAnswers(answers) {
+    let arr = []
+      function fillArray(answers) {
+        if (answers.length === 0) return arr
+        let random = Math.floor(Math.random() * answers.length)
+        arr.push(answers[random])
+        let filteredArray = answers.filter(el => el !== answers[random])
+        return fillArray(filteredArray)
+      }
+      return fillArray(answers)
+  }
+
+function CategoriesModal({setRandomAnswersArray, state, setIsLoaded}) {
     const formats = useSelector(state => state.categoriesReducer);
+    let selectedCategories = useSelector(state => state.categoriesReducer)
     const [error, setError] = useState(false)
     const dispatch = useDispatch()
 
@@ -21,10 +35,25 @@ function CategoriesModal({state}) {
         dispatch({type: "setCategories", newFormats})
     };
 
+    async function fetchQuiz() {
+        let random = Math.floor(Math.random() * selectedCategories.length)
+        let category = selectedCategories[random]
+        let params = {amount: 10, category: category === 'any' ? null : category, encode: 'base64'}
+        let results = await axios.get(`https://opentdb.com/api.php`, { params })
+        let inputArray = results.data.results.map(el => el.incorrect_answers.map(el => atob(el)).concat(atob(el.correct_answer)))
+        dispatch({type: 'setQuestions', data: results.data.results})
+        let outputArray = inputArray.map(el => randomAnswers(el))
+        return outputArray
+    }
+
     const handleStart = () => {
-        if (formats.length > 5 || formats.includes("any")) {
+        if (formats.length >= 5 || formats.includes("any")) {
             state(false)
             dispatch({type: "STARTGAME"}) 
+            fetchQuiz().then(res => {
+                setRandomAnswersArray(res)
+                setIsLoaded(true)
+            })
         }
         else {
             setError(true)

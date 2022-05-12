@@ -12,3 +12,10 @@ body {
 .App {
   background-color: white;
 }
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}

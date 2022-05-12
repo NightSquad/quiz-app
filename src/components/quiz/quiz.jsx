@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
 import QuizFooter from './footer/footer';
 import QuizHeader from './Header/header';
@@ -8,17 +8,18 @@ import Ask from './ask/ask';
 import ScoreModal from './Modal/scoreModal';
 import "./quiz.css"
 
-function Quiz({answers}) {
+function Quiz({setRandomAnswersArray, answers}) {
     const activeStep = useSelector(state => state.stepReducer)
-    const isFinish = useSelector(state => state.finishReducer)
+    const [isFinish, setFinish] = useState(false)
 
+    console.log('render')
     return ( 
         <div className='quiz'>
             <QuizHeader/>
             <Ask/>
             <Answers results={answers[activeStep]}/>
-            <QuizFooter/>
-            {isFinish && <ScoreModal></ScoreModal>}
+            <QuizFooter setFinish={setFinish}/>
+            {isFinish && <ScoreModal setRandomAnswersArray={setRandomAnswersArray} setFinish={setFinish}></ScoreModal>}
         </div>
     );
 }
