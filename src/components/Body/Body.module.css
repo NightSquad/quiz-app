@@ -1,12 +1,13 @@
 .Body {
-    display: flex;
-    margin-left: 100px;
+    display: flex !important;
+    flex-wrap: wrap;
+    margin-left: 100px !important;
     margin-top: 43px;
 }
 
 .title {
     margin-top: 20px;
-    width: 291px;
+    max-width: 291px;
     font-family: 'Roboto';
     font-weight: 500;
     font-size: 37px;
@@ -42,4 +43,14 @@
     margin-top: 35px;
     display: flex;
     justify-content: space-between;
+}
+
+@media screen and (max-width: 480px) {
+    .Body {
+        margin-left: 10px !important;
+    }
+
+    .peopleImg {
+        width: 100%;
+    }
 }

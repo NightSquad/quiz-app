@@ -24,3 +24,9 @@
     bottom: 0;
     font-size: 12px;
 }
+
+@media screen and (max-width: 480px) {
+    .ask {
+        font-size: 18px;
+    }
+}

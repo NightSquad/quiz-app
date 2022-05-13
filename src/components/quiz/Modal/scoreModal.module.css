@@ -25,3 +25,9 @@
 .answer {
     font-size: 18px;
 }
+
+@media screen and (max-width: 480px) {
+    .Box {
+        width: 95% !important;
+    }
+}

@@ -1,8 +1,11 @@
 import { Button } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './answers.module.css'
+import { useTheme, useMediaQuery } from '@mui/material';
 
 function Answers({results}) {
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.down('sm'));
     const activeStep = useSelector(state => state.stepReducer)
     const currentAnswer = useSelector(state => state.answersReducer)
     const dispatch = useDispatch()
@@ -32,9 +35,10 @@ function Answers({results}) {
                             color: 'white',
                         }
                     }),
-                    minHeight: 85,
-                    width: 250,
-                    marginLeft: '50px',
+                    minHeight: matches ? '30px' : '80px',
+                    width: matches ? '100%' : '150px',
+                    marginLeft: matches ? '0' : index === 0 ? '0' : '50px',
+                    marginTop: matches && index === 0 ? '0' : '10px',
                     '&:hover': {
                         color: '#FFFFFF',
                         backgroundColor: "#FCC822",

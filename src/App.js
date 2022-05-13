@@ -1,4 +1,4 @@
-import { CircularProgress } from '@mui/material';
+import { CircularProgress, Container } from '@mui/material';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
@@ -16,20 +16,22 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false)
 
   return (
-      <div className="App"> 
+      <Container maxWidth='md' className="App"> 
       <Router>
         <Header/>
           <Routes>
             <Route path='/login' element={<h1>Login</h1>}/>
             <Route path='/' element={!gameState && <Body setSelectCategory={setSelectCategory}/>}/>
+            <Route path='/quiz' element={
+              <div className='main'>
+              {gameState &&!isLoaded && <CircularProgress size={150} sx={{color: '#FCC822', marginBottom: '20px'}}></CircularProgress>}
+              {gameState && randomAnswersArray.length > 0 && isLoaded && <Quiz setIsLoaded={setIsLoaded} setRandomAnswersArray={setRandomAnswersArray} answers={randomAnswersArray}/>}
+            </div>
+            }/>
           </Routes>
-        </Router>
-        <div className='main'>
-          {gameState &&!isLoaded && <CircularProgress size={150} sx={{color: '#FCC822', marginBottom: '20px'}}></CircularProgress>}
-          {gameState && randomAnswersArray.length > 0 && isLoaded && <Quiz setIsLoaded={setIsLoaded} setRandomAnswersArray={setRandomAnswersArray} answers={randomAnswersArray}/>}
           {selectCategory && <CategoriesModal setIsLoaded={setIsLoaded} setRandomAnswersArray={setRandomAnswersArray} state={setSelectCategory}/>}
-        </div>
-      </div>
+        </Router>
+      </Container>
   );
 }
 

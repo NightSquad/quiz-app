@@ -1,6 +1,4 @@
 body {
-  width: 840px;
-  margin: 0 auto;
   background-color: rgb(212, 212, 212);
 }
 
@@ -10,7 +8,9 @@ body {
 }
 
 .App {
+  max-width: 840px !important;
   background-color: white;
+  padding: 0 !important;
 }
 
 .main {

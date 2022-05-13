@@ -20,7 +20,23 @@
 }
 
 .categories {
-    width: 600px;
+    width: 80%;
     margin-top: 30px;
     margin-bottom: 100px;
+}
+
+@media screen and (max-width: 480px) {
+    .Box {
+        width: 90% !important;
+    }
+    .title {
+      font-size: 30px;  
+    }
+    .ButtonGroup {
+        height: 400px;
+        overflow: scroll;
+        scrollbar-color: #333333 !important;
+        scrollbar-width: thin;
+        padding-right: 10px;
+    }
 }

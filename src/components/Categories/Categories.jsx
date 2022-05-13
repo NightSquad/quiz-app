@@ -6,6 +6,9 @@ import styles from './Categories.module.css'
 import { makeStyles } from '@mui/styles';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { Link } from 'react-router-dom';
 
 function randomAnswers(answers) {
     let arr = []
@@ -20,6 +23,9 @@ function randomAnswers(answers) {
   }
 
 function CategoriesModal({setRandomAnswersArray, state, setIsLoaded}) {
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.down('sm'));
+    console.log(theme)
     const formats = useSelector(state => state.categoriesReducer);
     let selectedCategories = useSelector(state => state.categoriesReducer)
     const [error, setError] = useState(false)
@@ -97,17 +103,20 @@ function CategoriesModal({setRandomAnswersArray, state, setIsLoaded}) {
                 height: 27,
                 fontFamily: 'Roboto',
                 fontWeight: '500',
-                fontSize: '15px',
+                fontSize: '13px',
                 lineHeight: '15px',
                 color: '#000000',
                 textTransform: 'none',
                 marginTop: '10px',
                 marginLeft: '10px !important',
+                '&:hover': {
+                    background: "#FCC822 !important"
+                }
             },
             [`&.${toggleButtonClasses.selected}`]: {
                 backgroundColor: '#FCC822 !important',
                 position: 'relative',
-                marginRight: 27
+                marginRight: 27,
             },
             [`&.${toggleButtonClasses.selected}::after`]: {
                 content: '"X"',
@@ -142,26 +151,27 @@ function CategoriesModal({setRandomAnswersArray, state, setIsLoaded}) {
 
     return ( 
         <Modal
-        sx={{backgroundColor: "rgba(0, 0, 0, 0.5)"}}
+        sx={{backgroundColor: "rgba(0, 0, 0, 0.5)", overflow: 'scroll'}}
         open={true}>
-            <Box sx={style}>
+            <Box className={styles.Box} sx={style}>
                 <Collapse sx={{width: '100%'}} in={error}>
                     <Alert sx={{borderRadius: '0'}} variant='filled' severity='error'>
                         Select more than 5 topics to start quiz
                     </Alert>
                 </Collapse>
                 <h2 className={styles.title}>Choose your favorite topic</h2>
-                <p className={styles.hint}>Select more than 5 topics to start quiz</p>
+                <p className={styles.hint}>Select more than 5 topics to start quiz {matches && '(scrollable)'}</p>
                 <div className={styles.categories}>
                     <ToggleButtonGroup
                     value={formats}
                     onChange={handleFormat}
-                    sx={{display: 'flex', flexWrap: 'wrap'}}
+                    sx={{display: 'flex', flexDirection: matches ? 'column' : 'raw', flexWrap: matches ? "nowrap" : 'wrap'}}
+                    className={styles.ButtonGroup}
                     >
                         {categories.map(category => <ToggleButton size='small' className={c.root} key={category[0]} value={category[0]}>{category[1]}</ToggleButton>)}
                     </ToggleButtonGroup>
                 </div>
-                <CustomButton variant='contained' sx={{position: 'absolute', right: 30, bottom: 30}} onClick={handleStart}>Start Quiz</CustomButton>
+                <Link to="/quiz" style={{textDecoration: 'none'}}><CustomButton variant='contained' sx={{position: 'absolute', right: 30, bottom: 30}} onClick={handleStart}>Start Quiz</CustomButton></Link>
             </Box>
         </Modal>
      );
