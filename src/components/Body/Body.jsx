@@ -1,4 +1,3 @@
-import React from 'react'
 import styles from './Body.module.css'
 import people from '../images/people.webp'
 import CustomButton from '../UI/CustomButton';

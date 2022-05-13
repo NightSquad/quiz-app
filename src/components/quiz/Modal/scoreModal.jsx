@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styles from './scoreModal.module.css'
 import { Modal } from '@mui/material';
 import { Box } from '@mui/system';

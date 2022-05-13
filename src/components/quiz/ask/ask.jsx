@@ -1,4 +1,3 @@
-import React from 'react'
 import { Box } from '@mui/material';
 import styles from './ask.module.css'
 import { useSelector } from 'react-redux';

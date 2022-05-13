@@ -1,6 +1,5 @@
 import { Stepper, Step, StepLabel } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import React from 'react'
 import { useSelector } from 'react-redux';
 import styles from './header.module.css'
 

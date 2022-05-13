@@ -1,7 +1,6 @@
-import React from 'react'
 import styles from './header.module.css'
 import hat from '../images/hat.png'
-import { NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import CustomButton from '../UI/CustomButton';
 
 function Header() {

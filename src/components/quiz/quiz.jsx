@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useSelector } from 'react-redux';
 import QuizFooter from './footer/footer';
 import QuizHeader from './Header/header';

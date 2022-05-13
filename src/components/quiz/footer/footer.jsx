@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './footer.module.css'
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
-import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
+// import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import { useDispatch, useSelector } from 'react-redux';
 import CustomButton from '../../UI/CustomButton';
 
